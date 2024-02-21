@@ -1,0 +1,82 @@
+/*********************************************************************************************
+ *   Program Name: Mileage-Speed Linear Interpolation           Author(s): Andrew Helfenberger
+ *   ENGR 200.02                                                Assignment: # 2
+ *   Date 9-15-15 
+ *   
+ *   Function:  Program that uses linear interpolation to calculate the mileage of the vehicle 
+ *   at any speed when provided points from the table on each side of the desired speed.
+ *
+ *********************************************************************************************
+ *
+ *   Variables  |  function                        |  units
+ *   --------------------------------------------------------------------------
+ *   SPEED1     |       first SPEEED point         |  MPH
+ *   MILEAGE1   |       first MILEAGE point        |  MPG
+ *   SPEED2     |       second SPEEED point        |  MPH
+ *   MILEAGE2   |       second MILEAGE point       |  MPG
+ *   SPEED3     |       interpolation SPEED        |  MPH
+ *   MILEAGE3   |       interpolation MILEAGE      |  MPG
+ *********************************************************************************************/
+
+ /* Header Files */
+#include <stdio.h> /*This is needed for the printf function*/
+
+ /*Start of main function*/
+ int main(void)
+ {
+    /* declarations: */
+	double SPEED1, SPEED2, SPEED3, MILEAGE1, MILEAGE2, MILEAGE3;
+    char g; /* Do not remove this line */
+
+	/*Print the title of the program*/
+	printf("              MILEAGE SPEED INTERPOLATION\n");
+	printf("______________________________________________________________________\n");
+
+
+	/*Get the needed input*/
+
+	//Enter the first point
+	printf("                                          \n");
+	printf("Enter the speed for the first data point: ");
+	scanf("%lf", &SPEED1);
+	printf("Enter the mileage for the first data point: ");
+	scanf("%lf", &MILEAGE1);
+
+	//Enter the second point
+	printf("Enter the speed for the second data point: ");
+	scanf("%lf", &SPEED2);
+	printf("Enter the mileage for the second data point: ");
+	scanf("%lf", &MILEAGE2);
+
+	//Enter the stress corresponding to the desired strain
+	printf("Enter the speed that you would like the mileage for: ");
+	scanf("%lf", &SPEED3);
+	printf("______________________________________________________________________\n");
+
+	/*Statements that perform the desired task*/
+    MILEAGE3 = MILEAGE1 + (MILEAGE2-MILEAGE1)/(SPEED2-SPEED1)*(SPEED3-SPEED1);
+
+
+    /*Printing of the results*/
+    printf("                    RESULTS\n");
+
+	/*print the values used to calculate the interpolation strain*/
+    printf("          FIRST SPEED:         %6.1f\n", SPEED1);
+    printf("          SECOND SPEED:        %6.1f\n", SPEED2);    
+    printf("          INTERPOLATION SPEED: %6.1f\n\n", SPEED3);
+    
+    printf("          FIRST MIILEAGE:           %5.3f\n", MILEAGE1);
+    printf("          SECOND MILEAGE:           %5.3f\n", MILEAGE2);    
+
+    /* print the results of the calculation*/
+    printf("          INTERPOLATION MILEAGE:    %5.3f\n", MILEAGE3);
+
+   
+	/*Keeps the window open.  Please do not alter this.*/
+	printf("\n\nEnter to q to quit.\n");
+    do{ 
+       g = getchar();
+    }while( g != 'q' );
+
+	return 0;
+ }
